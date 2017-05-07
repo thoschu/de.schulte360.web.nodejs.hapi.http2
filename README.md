@@ -1,5 +1,5 @@
 # de.schulte360.web.nodejs.hapi.http2
-Hapi Server Hypertext Transfer Protocol 2
+Hapi Server with Hypertext Transfer Protocol 2
 
 ## How to run code locally?
 
