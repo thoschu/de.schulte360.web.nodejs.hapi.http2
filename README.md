@@ -6,3 +6,8 @@ Hapi Server Hypertext Transfer Protocol 2
 1. Install dependencies with `npm install`
 2. Run code with `node index`
 3. Open [https://localhost:3333/](https://localhost:3333/)
+
+
+![alt text](https://github.com/thoschu/de.schulte360.web.nodejs.hapi.http2/blob/master/network_a.png "")
+
+![alt text](https://github.com/thoschu/de.schulte360.web.nodejs.hapi.http2/blob/master/network_b.png "")
