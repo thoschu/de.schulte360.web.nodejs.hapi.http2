@@ -1,0 +1,29 @@
+Konfiguration des Servers für die parallele Nutzung von IPv4 und IPv6 Adressen.
+
+Bei Ubuntu und Debian basierten Systemen wird die Konfiguration der Netzwerkschnittstellen über die Datei 
+/etc/network/interfaces vorgenommen. Diese könnte bei der Nutzung mit IPv4 wie folgt aussehen.
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+    address 192.168.0.1
+    netmask 255.255.255.0
+    gateway 192.168.0.254
+
+Soll der Netzwerkschnittstelle jetzt eine weiter IPv6 Adresse zugeordnet werden, 
+so kann dies durch eine einfache Erweiterung der Konfigurationsdatei geschehen.
+
+iface eth0 inet6 static
+    address 2001:0DB8:0068:9cb9::3
+    netmask 64
+    gateway 2001:0DB8:0068:9cb9::2
+
+Wird die Netzwerkkonfiguration neu geladen oder der Server neu gestartet.
+So sollte die Netzwerkschnittstelle eth0 jetzt eine IPv4-Adresse und neben einer lokalen auch die konfigurierte IPv6-Adresse besitzen.
+
+Soll auf dem Linux-System Routing erlaubt werden, so musste bei IPv4 der Wert in /proc/sys/net/ipv4/ip_forward auf 1 gesetzt werden. Für IPv6 muss jedoch der Wert in der Datei /proc/sys/net/ipv6/conf/all/forwarding entsprechend angepasst werden. Damit die Änderungen auch nach einem Neustart erhalten bleiben können diese Werte auch in der Datei /etc/sysctl.conf fest eingetragen werden. Hierzu müssen die beiden folgenden Zeilen entweder ergänzt oder entsprechend angepasst werden.
+
+net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding = 1
